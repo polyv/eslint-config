@@ -1,0 +1,35 @@
+{
+  "name": "@polyv/eslint-config",
+  "version": "0.8.0",
+  "description": "Standard ESLint configuration for Polyv projects.",
+  "keywords": [
+    "polyv",
+    "eslint",
+    "config"
+  ],
+  "homepage": "https://www.polyv.net/",
+  "license": "MIT",
+  "engines": {
+    "node": "^20.10.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.24.9",
+    "@babel/eslint-parser": "^7.24.8",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "@vue/eslint-config-standard": "^8.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-sonarjs": "^0.25.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "typescript": "^5.5.3",
+    "vue-eslint-parser": "^9.4.3"
+  },
+  "scripts": {
+    "print-config": "eslint --print-config ./lib/for-vue.js > config.txt"
+  }
+}
