@@ -1,0 +1,4 @@
+interface:
+  display_name: "Polyv ESLint 配置接入"
+  short_description: "接入 ESLint10、Vue2、小程序与 Prettier"
+  default_prompt: "使用 $polyv-eslint-config 给当前消费项目接入 @polyv/eslint-config，并按 JS/TS/Vue2/小程序/Prettier 场景组合配置。"

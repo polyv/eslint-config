@@ -36,6 +36,68 @@ export default [
 ];
 ```
 
+## 配置项
+
+### `ignore`
+
+`ignore` 用于按文件路径忽略本规则检查。它支持字符串通配符和 `RegExp` 正则表达式，可以写在规则 options 中，也可以写在 `settings['polyv/no-relative-directory-index-imports']` 中。
+
+字符串通配符支持：
+
+- `*`：匹配单层路径中的任意字符。
+- `**`：匹配多层路径。
+- `?`：匹配单个字符。
+- `{js,ts}`：匹配多个扩展或片段。
+
+规则会使用当前 lint 文件的相对路径、绝对路径和 basename 进行匹配。
+
+通过规则 options 配置：
+
+```javascript
+// eslint.config.mjs
+import polyv from '@polyv/eslint-config';
+
+export default [
+  ...polyv.configs.common,
+  {
+    rules: {
+      'polyv/no-relative-directory-index-imports': ['error', {
+        ignore: [
+          '**/__fixtures__/**/*.{js,ts}',
+          /legacy-entry\.ts$/
+        ]
+      }]
+    }
+  }
+];
+```
+
+通过 settings 配置：
+
+```javascript
+// eslint.config.mjs
+import polyv from '@polyv/eslint-config';
+
+export default [
+  ...polyv.configs.common,
+  {
+    settings: {
+      'polyv/no-relative-directory-index-imports': {
+        ignore: [
+          '**/__fixtures__/**/*.{js,ts}',
+          /legacy-entry\.ts$/
+        ]
+      }
+    },
+    rules: {
+      'polyv/no-relative-directory-index-imports': 'error'
+    }
+  }
+];
+```
+
+如果 settings 和规则 options 都配置了 `ignore`，两者会合并生效。
+
 ## 错误示例
 
 ```javascript

@@ -29,7 +29,5 @@
     "typescript": "^5.5.3",
     "vue-eslint-parser": "^9.4.3"
   },
-  "scripts": {
-    "print-config": "eslint --print-config ./lib/for-vue.js > config.txt"
-  }
+  "scripts": {}
 }

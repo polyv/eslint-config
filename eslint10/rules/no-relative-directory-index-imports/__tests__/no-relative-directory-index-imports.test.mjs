@@ -17,6 +17,10 @@ function createFixture() {
   fs.writeFileSync(path.join(src, 'utils', 'index.js'), 'module.exports = {};\n');
   fs.writeFileSync(path.join(src, 'plain.ts'), 'export const value = 1;\n');
   return {
+    ignoredByGlobFilename: path.join(src, 'ignored-by-glob.ts'),
+    ignoredByOptionsRegexFilename: path.join(src, 'ignored-by-options-regex.ts'),
+    ignoredBySettingsGlobFilename: path.join(src, 'ignored-by-settings-glob.ts'),
+    ignoredBySettingsRegexFilename: path.join(src, 'ignored-by-settings-regex.ts'),
     root,
     filename: path.join(src, 'main.ts'),
     nestedFilename: path.join(nested, 'main.ts'),
@@ -53,6 +57,38 @@ test('no-relative-directory-index-imports', () => {
         languageOptions: {
           ecmaVersion: 'latest',
           sourceType: 'commonjs'
+        }
+      },
+      {
+        code: "import value from './interface';",
+        filename: fixture.ignoredByGlobFilename,
+        options: [{
+          ignore: ['**/ignored-by-glob.ts']
+        }]
+      },
+      {
+        code: "import value from './interface';",
+        filename: fixture.ignoredByOptionsRegexFilename,
+        options: [{
+          ignore: [/ignored-by-options-regex\.ts$/]
+        }]
+      },
+      {
+        code: "import value from './interface';",
+        filename: fixture.ignoredBySettingsGlobFilename,
+        settings: {
+          'polyv/no-relative-directory-index-imports': {
+            ignore: ['**/ignored-by-settings-glob.ts']
+          }
+        }
+      },
+      {
+        code: "import value from './interface';",
+        filename: fixture.ignoredBySettingsRegexFilename,
+        settings: {
+          'polyv/no-relative-directory-index-imports': {
+            ignore: [/ignored-by-settings-regex\.ts$/]
+          }
         }
       }
     ],

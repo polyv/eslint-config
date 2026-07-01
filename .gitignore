@@ -1,2 +1,12 @@
-node_modules/
 .DS_Store
+
+# Root dependency directory
+node_modules/
+
+# Logs
+logs/
+*.log*
+
+dist
+
+dest
